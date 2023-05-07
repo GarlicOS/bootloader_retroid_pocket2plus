@@ -47,6 +47,9 @@ then
 	# The partition contains a init script
 	if [ -f $BOOT_PARTITION_MOUNT_POINT/$INIT_FILE ]
 	then
+		# Unzip the firmware files
+		unzip -x /device-resources/modules.zip -d /lib/firmware
+		
 		# Bind mount the firmware (needed for libhybris but breaks the stock recovery)
 		mkdir -p /lib/firmware
 		mount -o bind /firmware /lib/firmware
