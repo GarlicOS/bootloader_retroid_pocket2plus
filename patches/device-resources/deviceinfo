@@ -1,0 +1,14 @@
+#!/system/bin/sh
+# Device info properties and various device environment variables
+
+# Device Information
+export DEVICE_NAME="Retroid Pocket 2+"
+export DEVICE_MANUFACTURER="Retroid"
+export DEVICE_MODEL="Pocket 2+"
+export DEVICE_CODENAME="pocket2plus"
+
+# Device screen configuration
+# Screen rotation(in degrees): 0, 90, or 180
+export SDL_SCREEN_ROTATION=0
+# Skip the SDL encoder ID check
+export SDL_SKIP_ENCODER_ID_CHECK=true

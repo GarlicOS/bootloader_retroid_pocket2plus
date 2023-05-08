@@ -65,6 +65,9 @@ then
 		# To avoid semi-bricks, always set the boot device back to emmc
 		/system/bin/erasebootrecord
 
+		# Run the deviceinfo script (sets necessary, device-specific environment variables)
+		source /device-resources/deviceinfo
+
 		# Execute the init script (this one should never return)
 		/system/bin/sh $BOOT_PARTITION_MOUNT_POINT/$INIT_FILE
 
