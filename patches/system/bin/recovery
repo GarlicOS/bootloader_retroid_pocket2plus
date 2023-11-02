@@ -40,6 +40,9 @@ done
 # The boot partition has been detected
 if [ -b $BOOT_PARTITION ]
 then
+	# Set selinux to permissive as soon as possible
+	setenforce permissive
+
 	# Mount the boot partition
 	mkdir $BOOT_PARTITION_MOUNT_POINT
 	mount -t exfat $BOOT_PARTITION $BOOT_PARTITION_MOUNT_POINT
