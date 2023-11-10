@@ -40,8 +40,6 @@ done
 # The boot partition has been detected
 if [ -b $BOOT_PARTITION ]
 then
-	# Set selinux to permissive as soon as possible
-	setenforce permissive
 
 	# Mount the boot partition
 	mkdir $BOOT_PARTITION_MOUNT_POINT
@@ -50,6 +48,9 @@ then
 	# The partition contains a init script
 	if [ -f $BOOT_PARTITION_MOUNT_POINT/$INIT_FILE ]
 	then
+		# Set selinux to permissive as soon as possible
+		setenforce permissive
+
 		# Bind mount the firmware (needed for libhybris but breaks the stock recovery)
 		mkdir -p /lib/firmware
 		mount -o bind /firmware /lib/firmware
@@ -69,7 +70,7 @@ then
 		source /device-resources/deviceinfo
 
 		# Unzip the firmware files
-		unzip -x /device-resources/modules.zip -d /lib/modules > /dev/null 2>&1 & 
+		#unzip -x /device-resources/modules.zip -d /lib/modules > /dev/null 2>&1 & 
 
 		# Execute the init script (this one should never return)
 		/system/bin/sh $BOOT_PARTITION_MOUNT_POINT/$INIT_FILE
